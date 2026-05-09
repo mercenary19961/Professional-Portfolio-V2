@@ -19,7 +19,7 @@ export default function Contact() {
             Send an Email
           </a>
           <a
-            href="https://www.linkedin.com/in/zaid-alsabbagh"
+            href="https://www.linkedin.com/in/zaid-sabbagh-6a7287227/?skipRedirect=true"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-3 rounded-lg border border-card-border text-zinc-300 text-sm font-semibold hover:border-zinc-500 hover:text-white transition-colors duration-200"
