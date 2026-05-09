@@ -13,7 +13,9 @@ export default function Contact() {
 
         <div className="flex flex-wrap items-center justify-center gap-4">
           <a
-            href="mailto:sabbaghzaid88@gmail.com"
+            href="https://mail.google.com/mail/?view=cm&to=sabbaghzaid88@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-6 py-3 rounded-lg bg-accent text-white text-sm font-semibold hover:bg-accent-hover transition-colors duration-200"
           >
             Send an Email
