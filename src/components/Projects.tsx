@@ -44,7 +44,7 @@ const projects = [
       "Official production website with multilingual support, animated UI, and a full admin panel. Laravel 12 backend with a React 19 + Inertia.js SPA frontend featuring drag-and-drop content management, analytics charts, and Zod-validated forms.",
     stack: ["Laravel 12", "React 19", "Inertia.js", "TypeScript", "Tailwind CSS 4", "Framer Motion"],
     github: "https://github.com/mercenary19961/Sky-Amman",
-    live: null,
+    live: "https://www.skyamman.com",
   },
 ];
 
