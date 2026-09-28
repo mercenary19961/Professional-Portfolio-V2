@@ -1,6 +1,19 @@
 import SectionHeader from "./SectionHeader";
 
+// Client repos are private, so client projects link to this public showcase
+// (screenshots + stack) instead of their source.
+const SHOWCASE_URL = "https://github.com/mercenary19961/showcase";
+
 const projects = [
+  {
+    name: "Retab Stores",
+    type: "E-Commerce Store",
+    description:
+      "Arabic-first online store for a Saudi dates brand, rebuilt from a hosted SaaS into a custom system. Card, BNPL and bank-transfer checkout, OTO shipping, WhatsApp notifications, and a full back office for orders, returns, coupons and campaigns.",
+    stack: ["Laravel 12", "React 19", "Inertia.js", "TypeScript", "Tailwind CSS 4", "Cloudflare R2"],
+    github: SHOWCASE_URL,
+    live: "https://retab.com.sa",
+  },
   {
     name: "SynergyMS",
     type: "Enterprise Management System",
@@ -16,7 +29,7 @@ const projects = [
     description:
       "Modern company site with a responsive UI, AI-integrated features, and structured business content sections. Built with a full React/Inertia stack on Laravel.",
     stack: ["Laravel", "Inertia.js", "React", "TypeScript", "Tailwind"],
-    github: "https://github.com/mercenary19961/HardRock",
+    github: SHOWCASE_URL,
     live: "https://www.hardrock-co.com/",
   },
   {
@@ -24,9 +37,9 @@ const projects = [
     type: "Steel Industry Corporate Site",
     description:
       "Product catalog, multilingual content, lead capture forms, and a non-technical admin panel designed for internal teams with no developer access.",
-    stack: ["Laravel", "MySQL", "Tailwind", "Alpine.js"],
-    github: "https://github.com/mercenary19961/NuorSteel",
-    live: "https://nuorsteel.hardrock-co.com/",
+    stack: ["Laravel 12", "React 19", "Inertia.js", "TypeScript", "Tailwind CSS 4", "MySQL"],
+    github: SHOWCASE_URL,
+    live: "https://nuorsteel.com",
   },
   {
     name: "HardRock E-Commerce",
@@ -34,7 +47,7 @@ const projects = [
     description:
       "Production-ready demo with product browsing, cart, checkout, and order history. Full admin dashboard covering inventory, orders, metrics, and demo data reset tools.",
     stack: ["Laravel 12", "React", "TypeScript", "Inertia.js", "Tailwind CSS 4", "MySQL"],
-    github: "https://github.com/mercenary19961/hardrock-ecom-demo",
+    github: null,
     live: "https://demo.hardrock-co.com/",
   },
   {
@@ -43,7 +56,7 @@ const projects = [
     description:
       "Official production website with multilingual support, animated UI, and a full admin panel. Laravel 12 backend with a React 19 + Inertia.js SPA frontend featuring drag-and-drop content management, analytics charts, and Zod-validated forms.",
     stack: ["Laravel 12", "React 19", "Inertia.js", "TypeScript", "Tailwind CSS 4", "Framer Motion"],
-    github: "https://github.com/mercenary19961/Sky-Amman",
+    github: SHOWCASE_URL,
     live: "https://www.skyamman.com",
   },
 ];
@@ -103,7 +116,7 @@ export default function Projects() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={`${project.name} GitHub repository`}
+                      aria-label={`${project.name} on GitHub`}
                       className="text-zinc-500 hover:text-white transition-colors duration-200"
                     >
                       <IconGitHub />
@@ -147,6 +160,18 @@ export default function Projects() {
             </div>
           ))}
         </div>
+
+        <p className="mt-10 text-center text-sm text-zinc-500">
+          Client source code is private.{" "}
+          <a
+            href={SHOWCASE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent hover:text-white transition-colors duration-200"
+          >
+            See screenshots and build details in the showcase →
+          </a>
+        </p>
       </div>
     </section>
   );
