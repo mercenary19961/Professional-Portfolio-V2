@@ -125,7 +125,7 @@ a { color: inherit; text-decoration: none; }
 
 .ls { margin-top: 44px; font-size: 13.5px; }
 .ls .prompt { margin-bottom: 14px; }
-.ls a.row { display: grid; grid-template-columns: 116px 190px minmax(0, 1fr) auto; gap: 18px; align-items: baseline; padding: 12px 8px; border-bottom: 1px dashed var(--line); transition: background .2s; }
+.ls .row { display: grid; grid-template-columns: 116px 190px minmax(0, 1fr) auto; gap: 18px; align-items: baseline; padding: 12px 8px; border-bottom: 1px dashed var(--line); transition: background .2s; }
 .ls a.row:hover { background: var(--panel); }
 .ls a.row:hover .p { color: var(--red); }
 .ls .perm { color: var(--mute); }
@@ -133,7 +133,7 @@ a { color: inherit; text-decoration: none; }
 .ls .w { color: var(--soft); }
 .ls .y { color: var(--mute); font-variant-numeric: tabular-nums; }
 @media (max-width: 760px) {
-  .ls a.row { grid-template-columns: minmax(0, 1fr) auto; }
+  .ls .row { grid-template-columns: minmax(0, 1fr) auto; }
   .ls .perm { display: none; }
   .ls .w { grid-column: 1 / -1; grid-row: 2; }
 }
@@ -190,3 +190,24 @@ a { color: inherit; text-decoration: none; }
 
 footer.foot { border-top: 1px solid var(--line); }
 footer.foot .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-block: 22px; color: var(--mute); font-size: 12.5px; }
+
+/* ---------- more work (status pills, archived card) ---------- */
+.count { margin: -12px 0 26px; color: var(--mute); font-size: 13px; }
+.card .shot .pill { position: absolute; z-index: 2; top: 10px; left: 10px; font-size: 11.5px; padding: 3px 8px; background: color-mix(in srgb, var(--bg) 85%, transparent); border: 1px solid var(--line); }
+.card .shot .pill.on { color: var(--ok); }
+.card .shot .pill.off { color: var(--mute); }
+.card .pname { color: var(--fg); }
+.card .kind { color: var(--mute); }
+.card .strike { text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: 1px; }
+.card.wide { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); }
+.card.wide .shot { border-bottom: 0; border-right: 1px solid var(--line); height: 100%; }
+.card.wide .body { padding: 22px 24px; }
+.card.archived .shot img { filter: grayscale(1) brightness(.55); }
+.card.archived .shot::after { opacity: .25; }
+.card.archived:hover .shot img { filter: grayscale(.3) brightness(.8); }
+@media (max-width: 760px) {
+  .card.wide { grid-template-columns: minmax(0, 1fr); }
+  .card.wide .shot { border-right: 0; border-bottom: 1px solid var(--line); height: auto; }
+}
+.ls .row.off .p { color: var(--mute); text-decoration: line-through; text-decoration-color: var(--red); }
+.ls .row.off .w { color: var(--mute); }
