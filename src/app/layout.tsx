@@ -1,36 +1,31 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { profile } from "@/data/profile";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const mono = JetBrains_Mono({ variable: "--font-mono", subsets: ["latin"], weight: ["400", "500", "700"] });
+const display = Space_Grotesk({ variable: "--font-display", subsets: ["latin"], weight: ["500", "700"] });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const description = `${profile.role} at ${profile.company}. Laravel, Inertia, React and TypeScript platforms in English and Arabic, built and run end to end.`;
 
 export const metadata: Metadata = {
-  title: "Zaid Al-Sabbagh — Lead Software Engineer",
-  description:
-    "Lead Software Engineer specializing in Laravel, React, TypeScript, and AI Integration. Building scalable systems with clean architecture.",
+  metadataBase: new URL("https://professional-portfolio-v2-dis2.vercel.app"),
+  title: `${profile.name} · ${profile.role}`,
+  description,
+  openGraph: {
+    title: `${profile.name} · ${profile.role}`,
+    description,
+    type: "website",
+    images: [{ url: "/shots/brandcode.webp", width: 1200, height: 750 }],
+  },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = { themeColor: "#0a0708" };
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable}`}
-    >
-      <body className="min-h-screen antialiased bg-[#0a0a0a] text-white">
-        {children}
-      </body>
+    <html lang="en" className={`${mono.variable} ${display.variable}`}>
+      <body className="min-h-screen antialiased">{children}</body>
     </html>
   );
 }

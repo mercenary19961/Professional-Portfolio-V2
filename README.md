@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<img src="docs/preview.png" width="100%" alt="zaid@amman:~$ whoami. Zaid Al-Sabbagh, Lead Software Engineer at BrandCode" />
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```console
+zaid@amman:~$ cat README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Zaid Al-Sabbagh · portfolio
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The source of my personal site: **[professional-portfolio-v2-dis2.vercel.app](https://professional-portfolio-v2-dis2.vercel.app)**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+I'm a Lead Software Engineer at [BrandCode](https://bcodepr.com), building Laravel, Inertia, React and TypeScript platforms in English and Arabic. The site is a single page in the same **Crimson Terminal** style as my [GitHub profile](https://github.com/mercenary19961): every section opens with a shell command.
 
-## Learn More
+| command | what it shows |
+|:--|:--|
+| `whoami` | who I am, plus a `status.json` with my current role |
+| `ls ~/shipped --live` | BrandCode, Lucent and CAN International, with screenshots that turn from red to full colour on hover, then a list of earlier builds |
+| `git log --since="1 year ago" --graph` | my contribution graph, private work included |
+| `git log --career --oneline` | experience as commits; open one to read the details |
+| `cat stack.json` | the tools I use, and what I'm learning now |
+| `echo $CONTACT` | email with a copy button, LinkedIn, GitHub and the CV |
 
-To learn more about Next.js, take a look at the following resources:
+<img src="docs/work.png" width="100%" alt="The ls ~/shipped section with three project cards" />
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Built with
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`Next.js 16` (App Router, fully static) · `React 19` · `TypeScript` · `Tailwind CSS 4` for the reset, hand-written CSS for the rest · `next/font` with Space Grotesk and JetBrains Mono · deployed on `Vercel`.
 
-## Deploy on Vercel
+No UI kit and no animation library. Motion is CSS only and switches off under `prefers-reduced-motion`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## How it fits together
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```text
+src/
+├─ data/profile.ts        all the words: role, projects, career, stack, links
+├─ app/
+│  ├─ layout.tsx          fonts, metadata, Open Graph
+│  ├─ page.tsx            the section order
+│  └─ globals.css         Crimson Terminal tokens and every style
+└─ components/            one file per section (Hero, Shipped, Activity, Career, Stack, Contact)
+public/
+├─ shots/                 project screenshots (webp)
+└─ cv.pdf                 the CV behind every "cv.pdf ↓" button
+```
+
+**Updating content** means editing `src/data/profile.ts` and nothing else. Swap `public/cv.pdf` when the CV changes.
+
+**The contribution graph** is not built here. A nightly GitHub Action in [mercenary19961/mercenary19961](https://github.com/mercenary19961/mercenary19961) redraws `assets/contributions.svg` from the GraphQL API, and this site loads that file. It stays current with no token, no API call and no redeploy.
+
+**Client code is private.** Case studies and walkthrough videos live in [brandcode-showcase](https://github.com/mercenary19961/brandcode-showcase) and [showcase](https://github.com/mercenary19961/showcase).
+
+## Run it
+
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # static production build
+npm run lint
+```
+
+## Contact
+
+[sabbaghzaid88@gmail.com](mailto:sabbaghzaid88@gmail.com) · [LinkedIn](https://www.linkedin.com/in/zaid-sabbagh-6a7287227/) · [GitHub](https://github.com/mercenary19961)

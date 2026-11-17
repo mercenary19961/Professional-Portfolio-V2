@@ -1,46 +1,39 @@
-import SectionHeader from "./SectionHeader";
+"use client";
+
+import { useState } from "react";
+import Prompt from "./Prompt";
+import { profile } from "@/data/profile";
 
 export default function Contact() {
+  const [copied, setCopied] = useState(false);
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      /* clipboard blocked: the address is still on screen to select */
+    }
+  };
   return (
-    <section id="contact" className="py-24 px-6 bg-card">
-      <div className="mx-auto max-w-4xl">
-        <SectionHeader label="Get in touch" title="Contact" centered />
-
-        <p className="text-zinc-400 text-base max-w-xl mx-auto mb-10 leading-relaxed text-center">
-          Open to new opportunities, collaborations, or just a good conversation.
-          Drop me a line and I&apos;ll get back to you.
-        </p>
-
-        <div className="flex flex-wrap items-center justify-center gap-4">
-          <a
-            href="https://mail.google.com/mail/?view=cm&to=sabbaghzaid88@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 rounded-lg bg-accent text-white text-sm font-semibold hover:bg-accent-hover transition-colors duration-200"
-          >
-            Send an Email
-          </a>
-          <a
-            href="https://www.linkedin.com/in/zaid-sabbagh-6a7287227/?skipRedirect=true"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 rounded-lg border border-card-border text-zinc-300 text-sm font-semibold hover:border-zinc-500 hover:text-white transition-colors duration-200"
-          >
-            LinkedIn
-          </a>
-          <a
-            href="https://github.com/mercenary19961"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 rounded-lg border border-card-border text-zinc-300 text-sm font-semibold hover:border-zinc-500 hover:text-white transition-colors duration-200"
-          >
-            GitHub
-          </a>
+    <section className="sec contact" id="contact">
+      <div className="wrap">
+        <Prompt>echo $CONTACT</Prompt>
+        <h2 style={{ marginTop: 24 }}>
+          Have a role or
+          <br />a project? <span>Ping me.</span>
+        </h2>
+        <div style={{ display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap" }}>
+          <a className="mail" href={`mailto:${profile.email}`}>{profile.email}</a>
+          <button type="button" className="copy" onClick={copy}>
+            {copied ? "copied ✓" : "copy"}
+          </button>
         </div>
-
-        <p className="mt-8 text-center font-mono text-sm text-zinc-600">
-          sabbaghzaid88@gmail.com
-        </p>
+        <div className="cta">
+          <a className="btn" href={profile.linkedin} target="_blank" rel="noopener noreferrer">linkedin ↗</a>
+          <a className="btn" href={profile.github} target="_blank" rel="noopener noreferrer">github ↗</a>
+          <a className="btn" href={profile.cv} download="Zaid Al-Sabbagh CV.pdf">cv.pdf ↓</a>
+        </div>
       </div>
     </section>
   );
