@@ -31,90 +31,126 @@ export const SHOWCASE = {
   older: "https://github.com/mercenary19961/showcase",
 };
 
-export type Featured = {
+export type Project = {
   slug: string;
-  domain: string;
-  url: string;
   name: string;
+  domain: string;
+  /** null when the site is offline: the card then shows no visit link */
+  url: string | null;
+  kind: string;
   blurb: string;
   tags: string[];
   caseStudy: string;
-};
-
-export const featured: Featured[] = [
-  {
-    slug: "brandcode",
-    domain: "bcodepr.com",
-    url: "https://bcodepr.com",
-    name: "BrandCode",
-    blurb:
-      "Bilingual PR and marketing agency site with SSR, a Turnstile protected contact pipeline, an admin inbox for enquiries, articles and the team, and Sentry monitoring.",
-    tags: ["laravel", "inertia", "react", "ssr", "sentry"],
-    caseStudy: `${SHOWCASE.brandcode}#brandcode`,
-  },
-  {
-    slug: "lucent",
-    domain: "lucent-intl.com",
-    url: "https://lucent-intl.com",
-    name: "Lucent International Advisors",
-    blurb:
-      "Audit and advisory firm in five countries. Interactive offices map, enquiry form and SEO preserving redirects from the old site.",
-    tags: ["laravel", "react", "ssr", "seo"],
-    caseStudy: `${SHOWCASE.brandcode}#lucent`,
-  },
-  {
-    slug: "can-international",
-    domain: "canintlco.com",
-    url: "https://canintlco.com",
-    name: "CAN International",
-    blurb:
-      "Riyadh interior design, fit-out and exhibitions company, opened by a WebGL globe hero and motion throughout.",
-    tags: ["laravel", "react", "webgl", "motion"],
-    caseStudy: `${SHOWCASE.brandcode}#can-international`,
-  },
-];
-
-export type Listed = {
-  slug: string | null;
-  path: string;
-  url: string;
-  what: string;
-  tags: string[];
   year: string;
 };
 
-export const more: Listed[] = [
+// Order is the order on the page. Screenshots live in public/shots/<slug>.webp.
+export const projects: Project[] = [
+  {
+    slug: "brandcode",
+    name: "BrandCode",
+    domain: "bcodepr.com",
+    url: "https://bcodepr.com",
+    kind: "PR & marketing agency",
+    blurb:
+      "Bilingual agency site with SSR, a Turnstile protected contact pipeline, an admin inbox for enquiries, articles and the team, and Sentry monitoring.",
+    tags: ["laravel", "inertia", "react", "ssr", "sentry"],
+    caseStudy: `${SHOWCASE.brandcode}#brandcode`,
+    year: "2026",
+  },
+  {
+    slug: "lucent",
+    name: "Lucent International",
+    domain: "lucent-intl.com",
+    url: "https://lucent-intl.com",
+    kind: "Audit & advisory firm",
+    blurb:
+      "Firm in five countries. Interactive offices map, enquiry form and SEO preserving redirects from the old site.",
+    tags: ["laravel", "react", "ssr", "seo"],
+    caseStudy: `${SHOWCASE.brandcode}#lucent`,
+    year: "2026",
+  },
+  {
+    slug: "can-international",
+    name: "CAN International",
+    domain: "canintlco.com",
+    url: "https://canintlco.com",
+    kind: "Interior design & fit-out",
+    blurb:
+      "Riyadh interior design, fit-out and exhibitions company, opened by a WebGL globe hero, with rate limiting and CSP throughout.",
+    tags: ["laravel", "react", "webgl", "motion"],
+    caseStudy: `${SHOWCASE.brandcode}#can-international`,
+    year: "2026",
+  },
   {
     slug: "retab",
-    path: "retab.com.sa/",
+    name: "Retab Stores",
+    domain: "retab.com.sa",
     url: "https://retab.com.sa",
-    what: "Online store for a Saudi dates brand. Card, Apple Pay and Tamara checkout, OTO shipping, full back office.",
-    tags: ["laravel", "react", "playwright"],
+    kind: "E-commerce",
+    blurb:
+      "Arabic-first store for a Saudi dates brand, moved off a SaaS platform. Card, Apple Pay and Tamara checkout, OTO shipping, WhatsApp notifications and a full back office.",
+    tags: ["laravel", "react", "r2", "playwright"],
+    caseStudy: `${SHOWCASE.older}#retab-stores`,
     year: "2026",
   },
   {
     slug: "sky-amman",
-    path: "skyamman.com/",
+    name: "Sky Amman",
+    domain: "skyamman.com",
     url: "https://www.skyamman.com",
-    what: "Real estate developer site. Filterable listings, lead inbox and a CMS with undo.",
-    tags: ["laravel", "react", "ssr"],
+    kind: "Real estate developer",
+    blurb:
+      "Property listings with filters, one inbox for every lead form, and a CMS for every page with change history and undo.",
+    tags: ["laravel", "react", "ssr", "motion"],
+    caseStudy: `${SHOWCASE.older}#sky-amman`,
     year: "2026",
   },
   {
     slug: "nuor-steel",
-    path: "nuor-steel/",
-    url: `${SHOWCASE.older}#nuor-steel`,
-    what: "Saudi steel manufacturer. Spec sheets, certificate library, careers with CV upload.",
-    tags: ["laravel", "react", "sentry"],
+    name: "Nuor Steel",
+    domain: "nuor-steel",
+    url: "https://nuorsteel-website-production.up.railway.app",
+    kind: "Steel manufacturer",
+    blurb:
+      "Rebar and billet product pages with spec sheets, a certificate library with an in-page PDF viewer, and careers with CV upload.",
+    tags: ["laravel", "react", "sentry", "motion"],
+    caseStudy: `${SHOWCASE.older}#nuor-steel`,
     year: "2026",
   },
   {
-    slug: null,
-    path: "SynergyMS/",
+    slug: "hardrock",
+    name: "HardRock",
+    domain: "hardrock-co.com",
+    url: null,
+    kind: "Digital marketing & AI agency",
+    blurb:
+      "Animated landing page with a character that follows the cursor, 3D service visuals, light and dark themes in two languages, and in-house cookie consent. The company has closed, so the site is archived.",
+    tags: ["laravel", "react", "3d", "seo"],
+    caseStudy: `${SHOWCASE.older}#hardrock`,
+    year: "2026",
+  },
+];
+
+export type Repo = {
+  name: string;
+  url: string | null;
+  what: string;
+  year: string;
+};
+
+export const repos: Repo[] = [
+  {
+    name: "SynergyMS/",
     url: "https://github.com/mercenary19961/SynergyMS",
     what: "Role based platform for HR, clients, projects, tickets and attendance, built on Spatie Permissions.",
-    tags: ["laravel", "mysql", "spatie"],
     year: "2024",
+  },
+  {
+    name: "hardrock-shop/",
+    url: null,
+    what: "E-commerce demo with cart, checkout, order history and an admin for inventory, orders and metrics. Offline since HardRock closed.",
+    year: "2026",
   },
 ];
 
